@@ -47,7 +47,7 @@ class TestViewResponses(TestCase):
         """
         response = self.c.get(
             reverse('store:category_list', args=['django']))
-        self.assertEqual(response.status_code, 201)
+        self.assertEqual(response.status_code, 200)
 
     def test_product_detail_url(self):
         """
@@ -67,6 +67,6 @@ class TestViewResponses(TestCase):
         request.session = engine.SessionStore()
         response = product_all(request)
         html = response.content.decode('utf8')
-        self.assertIn('<title>BookStores</title>', html)
+        self.assertIn('<title>BookStore</title>', html)
         self.assertTrue(html.startswith('\n<!DOCTYPE html>\n'))
         self.assertEqual(response.status_code, 200)
